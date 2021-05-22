@@ -2,6 +2,7 @@ package com.example.mobile.pruebabold.di.module
 
 import com.example.mobile.pruebabold.data_source.data_access.api.ApiWoeid
 import com.example.mobile.pruebabold.di.scope.ApplicationScope
+import com.example.mobile.pruebabold.utlis.Contast.Companion.BASE_URL
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
@@ -12,7 +13,6 @@ import java.util.concurrent.TimeUnit
 
 @Module
 class RetrofitModule {
-    private val BASE_URL = "https://comicvine.gamespot.com/api/"
 
     @ApplicationScope
     @Provides
