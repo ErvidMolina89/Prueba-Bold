@@ -1,7 +1,7 @@
-package com.example.mobile.pruebabold.data_source.data_access.maper
+package com.example.mobile.pruebabold.data_source.data_access.maper.maper_woeid
 
-import com.example.mobile.pruebabold.data_source.data_access.dto.SourceDTO
-import com.example.mobile.pruebabold.models.SourceModels
+import com.example.mobile.pruebabold.data_source.data_access.dto.dto_woeid.SourceDTO
+import com.example.mobile.pruebabold.models.models_woeid.SourceModels
 
 fun SourceModels.fromDTO(sourceDTO: SourceDTO): SourceModels {
     return SourceModels().apply {
@@ -13,7 +13,8 @@ fun SourceModels.fromDTO(sourceDTO: SourceDTO): SourceModels {
 }
 
 fun SourceDTO.fromModels(sourceModels: SourceModels): SourceDTO {
-    return SourceDTO().apply {
+    return SourceDTO()
+        .apply {
         crawl_rate = sourceModels.crawl_rate
         slug = sourceModels.slug
         title = sourceModels.title

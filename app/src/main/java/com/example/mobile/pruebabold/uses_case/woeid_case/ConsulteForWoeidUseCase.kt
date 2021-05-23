@@ -2,7 +2,7 @@ package com.example.mobile.pruebabold.uses_case.woeid_case
 
 import com.example.mobile.pruebabold.base.App
 import com.example.mobile.pruebabold.data_source.repositories.RepoWoeid
-import com.example.mobile.pruebabold.models.WoeidModels
+import com.example.mobile.pruebabold.models.models_woeid.WoeidModels
 import javax.inject.Inject
 
 class ConsulteForWoeidUseCase {

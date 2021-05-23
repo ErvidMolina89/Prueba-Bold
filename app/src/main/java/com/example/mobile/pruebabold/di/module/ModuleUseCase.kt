@@ -1,6 +1,7 @@
 package com.example.mobile.pruebabold.di.module
 
 import com.example.mobile.pruebabold.di.scope.ApplicationScope
+import com.example.mobile.pruebabold.uses_case.search_case.ConsulteForSearchUseCase
 import com.example.mobile.pruebabold.uses_case.woeid_case.ConsulteForWoeidUseCase
 import dagger.Module
 import dagger.Provides
@@ -11,5 +12,9 @@ class ModuleUseCase {
     @ApplicationScope
     @Provides
     fun provideConsulteForWoeid() = ConsulteForWoeidUseCase()
+
+    @ApplicationScope
+    @Provides
+    fun provideConsulteForSearch() = ConsulteForSearchUseCase()
 
 }

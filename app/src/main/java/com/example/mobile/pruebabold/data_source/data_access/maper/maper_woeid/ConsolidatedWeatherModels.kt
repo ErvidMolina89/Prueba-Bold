@@ -1,10 +1,11 @@
-package com.example.mobile.pruebabold.data_source.data_access.maper
+package com.example.mobile.pruebabold.data_source.data_access.maper.maper_woeid
 
-import com.example.mobile.pruebabold.data_source.data_access.dto.ConsolidatedWeatherDTO
-import com.example.mobile.pruebabold.models.ConsolidatedWeatherModels
+import com.example.mobile.pruebabold.data_source.data_access.dto.dto_woeid.ConsolidatedWeatherDTO
+import com.example.mobile.pruebabold.models.models_woeid.ConsolidatedWeatherModels
 
 fun ConsolidatedWeatherModels.fromDTO(consolidatedWeatherDTO: ConsolidatedWeatherDTO): ConsolidatedWeatherModels {
-    return ConsolidatedWeatherModels().apply {
+    return ConsolidatedWeatherModels()
+        .apply {
         id = consolidatedWeatherDTO.id
         weather_state_name = consolidatedWeatherDTO.weather_state_name
         weather_state_abbr = consolidatedWeatherDTO.weather_state_abbr
@@ -23,7 +24,8 @@ fun ConsolidatedWeatherModels.fromDTO(consolidatedWeatherDTO: ConsolidatedWeathe
 }
 
 fun ConsolidatedWeatherDTO.fromModels(consolidatedWeatherModels: ConsolidatedWeatherModels): ConsolidatedWeatherDTO {
-    return ConsolidatedWeatherDTO().apply {
+    return ConsolidatedWeatherDTO()
+        .apply {
         id = consolidatedWeatherModels.id
         weather_state_name = consolidatedWeatherModels.weather_state_name
         weather_state_abbr = consolidatedWeatherModels.weather_state_abbr

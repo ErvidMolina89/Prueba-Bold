@@ -1,4 +1,4 @@
-package com.example.mobile.pruebabold.data_source.data_access.dto
+package com.example.mobile.pruebabold.data_source.data_access.dto.dto_woeid
 
 class SourceDTO {
 

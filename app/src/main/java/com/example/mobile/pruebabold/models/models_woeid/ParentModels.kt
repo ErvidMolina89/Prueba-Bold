@@ -1,6 +1,6 @@
-package com.example.mobile.pruebabold.data_source.data_access.dto
+package com.example.mobile.pruebabold.models.models_woeid
 
-class ParentDTO {
+class ParentModels {
 
     var latt_long: String? = null
     var location_type: String? = null

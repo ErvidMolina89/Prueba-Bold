@@ -1,4 +1,8 @@
-package com.example.mobile.pruebabold.models
+package com.example.mobile.pruebabold.models.models_woeid
+
+import com.example.mobile.pruebabold.models.models_woeid.ConsolidatedWeatherModels
+import com.example.mobile.pruebabold.models.models_woeid.ParentModels
+import com.example.mobile.pruebabold.models.models_woeid.SourceModels
 
 class WoeidModels {
 

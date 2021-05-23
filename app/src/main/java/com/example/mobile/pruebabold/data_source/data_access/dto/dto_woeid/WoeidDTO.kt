@@ -1,4 +1,8 @@
-package com.example.mobile.pruebabold.data_source.data_access.dto
+package com.example.mobile.pruebabold.data_source.data_access.dto.dto_woeid
+
+import com.example.mobile.pruebabold.data_source.data_access.dto.dto_woeid.ConsolidatedWeatherDTO
+import com.example.mobile.pruebabold.data_source.data_access.dto.dto_woeid.ParentDTO
+import com.example.mobile.pruebabold.data_source.data_access.dto.dto_woeid.SourceDTO
 
 class WoeidDTO {
 

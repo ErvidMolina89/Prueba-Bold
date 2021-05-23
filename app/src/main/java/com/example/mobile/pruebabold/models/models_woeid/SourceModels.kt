@@ -1,4 +1,4 @@
-package com.example.mobile.pruebabold.models
+package com.example.mobile.pruebabold.models.models_woeid
 
 class SourceModels {
 

@@ -1,5 +1,6 @@
 package com.example.mobile.pruebabold.di.module
 
+import com.example.mobile.pruebabold.data_source.data_access.api.ApiSearch
 import com.example.mobile.pruebabold.data_source.data_access.api.ApiWoeid
 import com.example.mobile.pruebabold.di.scope.ApplicationScope
 import com.example.mobile.pruebabold.utlis.Contast.Companion.BASE_URL
@@ -43,4 +44,8 @@ class RetrofitModule {
     @ApplicationScope
     @Provides
     fun provideApiWoeid(retrofit: Retrofit) = retrofit.create(ApiWoeid::class.java)
+
+    @ApplicationScope
+    @Provides
+    fun provideApiSearch(retrofit: Retrofit) = retrofit.create(ApiSearch::class.java)
 }

@@ -3,4 +3,9 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+    <string name="edit_text_search">Ingresar Texto</string>
+    <string name="list_is_empty">Lista Vacia</string>
+    <string name="title">Titulo</string>
+    <string name="type_location">Tipo de ubicación</string>
+    <string name="title_location">Ingresa tu Ubicación</string>
 </resources>
