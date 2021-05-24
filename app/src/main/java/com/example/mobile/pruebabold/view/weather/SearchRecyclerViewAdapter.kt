@@ -5,27 +5,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.fragment.app.FragmentActivity
-import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mobile.pruebabold.R
 import com.example.mobile.pruebabold.models.models_search.QueryModels
 
-class WeatherRecyclerViewAdapter  (
+class SearchRecyclerViewAdapter  (
+    val context : Context?,
     private var mValues: MutableList<QueryModels>
-) : RecyclerView.Adapter<WeatherRecyclerViewAdapter.ViewHolder>() {
+) : RecyclerView.Adapter<SearchRecyclerViewAdapter.ViewHolder>() {
 
-    private val mOnClickListener: View.OnClickListener
-    private val searchListViewModel : WeatherViewModel
-
-    init {
-        mOnClickListener = View.OnClickListener { v ->
-            val item = v.tag as QueryModels
-        }
-
-        searchListViewModel = ViewModelProviders.of(context as FragmentActivity).get(
-            WeatherViewModel::class.java)
-    }
+    private var listener: ((QueryModels)-> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context)
@@ -43,17 +32,12 @@ class WeatherRecyclerViewAdapter  (
         holder.tv_woeid.text         = item.woeid.toString()
 
         setListeners(holder,item)
-
-        with(holder.mView) {
-            tag = item
-            setOnClickListener(mOnClickListener)
-        }
     }
 
     private fun setListeners(holder : ViewHolder, item : QueryModels){
         holder.mView
             .setOnClickListener {
-                it
+                listener?.invoke(item)
             }
     }
 
@@ -62,6 +46,10 @@ class WeatherRecyclerViewAdapter  (
     fun setData(listSearch : MutableList<QueryModels>){
         this.mValues = listSearch
         notifyDataSetChanged()
+    }
+
+    fun onClickListener(listener : (QueryModels)-> Unit){
+        this.listener = listener
     }
 
     inner class ViewHolder(val mView: View) : RecyclerView.ViewHolder(mView) {

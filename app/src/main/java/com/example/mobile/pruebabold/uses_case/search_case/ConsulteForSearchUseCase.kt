@@ -16,8 +16,8 @@ class ConsulteForSearchUseCase {
         (App.getContext() as App).getComponentApplication()?.inject(this)
     }
 
-    fun invoke(string: String, sucess: ((MutableList<QueryModels>)-> Unit), fail: (()-> Unit)) {
-        repoSearch.consulteSearchQuery(string, sucess, fail)
+    fun invoke(search: String, sucess: ((MutableList<QueryModels>)-> Unit), fail: (()-> Unit)) {
+        repoSearch.consulteSearchQuery(search, sucess, fail)
     }
 
 }

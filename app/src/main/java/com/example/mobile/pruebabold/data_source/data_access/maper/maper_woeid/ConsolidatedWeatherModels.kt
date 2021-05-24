@@ -14,6 +14,7 @@ fun ConsolidatedWeatherModels.fromDTO(consolidatedWeatherDTO: ConsolidatedWeathe
         applicable_date = consolidatedWeatherDTO.applicable_date
         min_temp = consolidatedWeatherDTO.min_temp
         max_temp = consolidatedWeatherDTO.max_temp
+        the_temp = consolidatedWeatherDTO.the_temp
         wind_speed = consolidatedWeatherDTO.wind_speed
         wind_direction = consolidatedWeatherDTO.wind_direction
         air_pressure = consolidatedWeatherDTO.air_pressure
@@ -33,6 +34,7 @@ fun ConsolidatedWeatherDTO.fromModels(consolidatedWeatherModels: ConsolidatedWea
         applicable_date = consolidatedWeatherModels.applicable_date
         min_temp = consolidatedWeatherModels.min_temp
         max_temp = consolidatedWeatherModels.max_temp
+        the_temp = consolidatedWeatherModels.the_temp
         wind_speed = consolidatedWeatherModels.wind_speed
         wind_direction = consolidatedWeatherModels.wind_direction
         air_pressure = consolidatedWeatherModels.air_pressure

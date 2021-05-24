@@ -14,8 +14,8 @@ class RepoWoeid {
         (App.getContext() as App).getComponentApplication()?.inject(this)
     }
 
-    fun consulteWeather(int: Int, sucess: ((WoeidModels)-> Unit), fail: (()-> Unit)){
-        woeidRemoteDataSource.getConsolidatedWeather(sucess, fail)
+    fun consulteWeather(woeid: Int, sucess: ((WoeidModels)-> Unit), fail: (()-> Unit)){
+        woeidRemoteDataSource.getConsolidatedWeather(woeid, sucess, fail)
     }
 
 }

@@ -22,8 +22,8 @@ class SearchRemoteDataSource {
             ?.inject(this)
     }
 
-    fun getSearchWeather(sucess: ((MutableList<QueryModels>)-> Unit), fail: (()-> Unit)){
-        apiSearch.getListSearch().enqueue(object: Callback<MutableList<QueryDTO>>{
+    fun getSearchWeather(search: String, sucess: ((MutableList<QueryModels>)-> Unit), fail: (()-> Unit)){
+        apiSearch.getListSearch(search).enqueue(object: Callback<MutableList<QueryDTO>>{
 
             override fun onResponse(
                 call: Call<MutableList<QueryDTO>>,

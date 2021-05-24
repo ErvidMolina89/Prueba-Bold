@@ -7,8 +7,9 @@ class ConsolidatedWeatherModels {
     var wind_direction_compass: String? = null
     var created: String? = null
     var applicable_date: String? = null
-    var min_temp: Double? = null
-    var max_temp: Double? = null
+    var min_temp: Float? = null
+    var max_temp: Float? = null
+    var the_temp: Float? = null
     var wind_speed: Double? = null
     var wind_direction: Double? = null
     var air_pressure: Float? = null

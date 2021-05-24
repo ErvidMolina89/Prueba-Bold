@@ -14,8 +14,8 @@ class RepoSearch {
         (App.getContext() as App).getComponentApplication()?.inject(this)
     }
 
-    fun consulteSearchQuery(string: String, sucess: ((MutableList<QueryModels>)-> Unit), fail: (()-> Unit)){
-        searchRemoteDataSource.getSearchWeather(sucess, fail)
+    fun consulteSearchQuery(search: String, sucess: ((MutableList<QueryModels>)-> Unit), fail: (()-> Unit)){
+        searchRemoteDataSource.getSearchWeather(search, sucess, fail)
     }
 
 }

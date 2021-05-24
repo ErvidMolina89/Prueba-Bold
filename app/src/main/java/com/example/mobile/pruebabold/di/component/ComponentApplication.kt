@@ -1,5 +1,6 @@
 package com.example.mobile.pruebabold.di.component
 
+import com.example.mobile.pruebabold.MainActivity
 import com.example.mobile.pruebabold.data_source.data_access.search.SearchRemoteDataSource
 import com.example.mobile.pruebabold.data_source.data_access.woeid.WoeidRemoteDataSource
 import com.example.mobile.pruebabold.data_source.repositories.RepoSearch
@@ -7,8 +8,8 @@ import com.example.mobile.pruebabold.data_source.repositories.RepoWoeid
 import com.example.mobile.pruebabold.di.module.*
 import com.example.mobile.pruebabold.uses_case.search_case.ConsulteForSearchUseCase
 import com.example.mobile.pruebabold.uses_case.woeid_case.ConsulteForWoeidUseCase
-import com.example.mobile.pruebabold.view.weather.WeatherFragment
-import com.example.mobile.pruebabold.view.weather.WeatherViewModel
+import com.example.mobile.pruebabold.view.weather.SearchFragment
+import com.example.mobile.pruebabold.view.weather.SearchViewModel
 import com.example.mobile.pruebabold.view.woeid.WoeidFragment
 import com.example.mobile.pruebabold.view.woeid.WoeidViewModel
 import dagger.Component
@@ -49,9 +50,12 @@ interface ComponentApplication {
     fun inject(consulteForSearchUseCase: ConsulteForSearchUseCase)
 
     //View Models search
-    fun inject(searchViewModel: WeatherViewModel)
+    fun inject(searchViewModel: SearchViewModel)
 
     //Frament search
-    fun inject(searchFragment: WeatherFragment)
+    fun inject(searchFragment: SearchFragment)
+
+    //Frament search
+    fun inject(mainActivity: MainActivity)
 
 }

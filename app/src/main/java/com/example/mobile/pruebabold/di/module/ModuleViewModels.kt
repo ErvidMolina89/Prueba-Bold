@@ -1,7 +1,7 @@
 package com.example.mobile.pruebabold.di.module
 
 import com.example.mobile.pruebabold.di.scope.ApplicationScope
-import com.example.mobile.pruebabold.view.weather.WeatherViewModel
+import com.example.mobile.pruebabold.view.weather.SearchViewModel
 import com.example.mobile.pruebabold.view.woeid.WoeidViewModel
 import dagger.Module
 import dagger.Provides
@@ -15,5 +15,5 @@ class ModuleViewModels {
 
     @ApplicationScope
     @Provides
-    fun provideSearchViewModel() = WeatherViewModel()
+    fun provideSearchViewModel() = SearchViewModel()
 }

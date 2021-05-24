@@ -21,8 +21,8 @@ class WoeidRemoteDataSource {
             ?.inject(this)
     }
 
-    fun getConsolidatedWeather(sucess: ((WoeidModels)-> Unit), fail: (()-> Unit)){
-        apiWoeid.getListWoeid().enqueue(object: Callback<WoeidDTO>{
+    fun getConsolidatedWeather(woeid: Int, sucess: ((WoeidModels)-> Unit), fail: (()-> Unit)){
+        apiWoeid.getListWoeid(woeid).enqueue(object: Callback<WoeidDTO>{
 
             override fun onResponse(
                 call: Call<WoeidDTO>,

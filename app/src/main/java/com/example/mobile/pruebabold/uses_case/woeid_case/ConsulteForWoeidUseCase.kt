@@ -14,8 +14,8 @@ class ConsulteForWoeidUseCase {
         (App.getContext() as App).getComponentApplication()?.inject(this)
     }
 
-    fun invoke(int: Int, sucess: ((WoeidModels)-> Unit), fail: (()-> Unit)) {
-        repoWoeid.consulteWeather(int, sucess, fail)
+    fun invoke(woeid: Int, sucess: ((WoeidModels)-> Unit), fail: (()-> Unit)) {
+        repoWoeid.consulteWeather(woeid, sucess, fail)
     }
 
 }
