@@ -8,4 +8,9 @@
     <string name="title">Titulo</string>
     <string name="type_location">Tipo de ubicación</string>
     <string name="title_location">Ingresa tu Ubicación</string>
+    <string name="date">Fecha</string>
+    <string name="temp">Temperatura</string>
+    <string name="state_weather">Estado Clima</string>
+    <string name="humidity">Humedad</string>
+    <string name="data_wheather">Datos del Clima</string>
 </resources>

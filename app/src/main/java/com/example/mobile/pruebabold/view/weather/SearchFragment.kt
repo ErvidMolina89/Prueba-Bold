@@ -1,11 +1,14 @@
 package com.example.mobile.pruebabold.view.weather
 
+import android.content.Context
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mobile.pruebabold.base.App
@@ -80,6 +83,8 @@ class SearchFragment : Fragment() {
 
         override fun navigationToLocation(location: QueryModels) {
             delegate?.showDetailsItemSelect(location)
+            val imm: InputMethodManager? = context?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager?
+            imm?.hideSoftInputFromWindow(binding.editTextSearch.getWindowToken(), 0)
         }
     }
 

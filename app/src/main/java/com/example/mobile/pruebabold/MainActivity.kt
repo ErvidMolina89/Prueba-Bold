@@ -1,8 +1,11 @@
 package com.example.mobile.pruebabold
 
+import android.content.Context
 import android.os.Bundle
+import android.view.inputmethod.InputMethodManager
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -38,6 +41,7 @@ class MainActivity : AppCompatActivity() {
         override fun showDetailsItemSelect(location: QueryModels) {
             fragmentWoeid.setQueryModels(location)
             navigationFragment(fragmentWoeid, "fragmentWoeid")
+
         }
 
     }
