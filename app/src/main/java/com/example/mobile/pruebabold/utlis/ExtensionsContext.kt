@@ -4,7 +4,11 @@ package com.example.mobile.pruebabold.utlis
 
 import android.content.Context
 import android.content.ContextWrapper
+import android.net.ConnectivityManager
 import androidx.appcompat.app.AppCompatActivity
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 //region dialogos
 fun Context.showDialogGeneric(){
@@ -28,4 +32,45 @@ private fun getContextValid(contex : Context) : Context{
         EndContex = (EndContex as ContextWrapper).baseContext
     }
     return EndContex
+}
+
+fun Context.showProgress(){
+    if(this !is AppCompatActivity){
+        return
+    }else{
+        runOnUiThread {
+            ProgressBarPersonalized
+                .getInstance()
+                .show(supportFragmentManager,"progressbar")
+        }
+
+        GlobalScope.launch {
+            delay(30_000)
+            hiddenProgress()
+        }
+    }
+}
+
+fun Context.hiddenProgress(){
+    if(this !is AppCompatActivity){
+        return
+    }else{
+        runOnUiThread {
+            ProgressBarPersonalized
+                .getInstance()
+                .dismiss()
+
+        }
+    }
+}
+
+fun Context.isNetworkAvailable(): Boolean{
+    try {
+        val connectivityManager =
+            this.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        val activeNetworkInfo = connectivityManager.activeNetworkInfo
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected
+    } catch (e: Exception) {
+        return false
+    }
 }

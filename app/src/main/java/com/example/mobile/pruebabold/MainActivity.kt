@@ -1,24 +1,13 @@
 package com.example.mobile.pruebabold
 
-import android.content.Context
 import android.content.res.Configuration
 import android.os.Bundle
-import android.os.Looper
-import android.view.inputmethod.InputMethodManager
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
-import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupActionBarWithNavController
-import androidx.navigation.ui.setupWithNavController
 import com.example.mobile.pruebabold.base.App
 import com.example.mobile.pruebabold.models.models_search.QueryModels
 import com.example.mobile.pruebabold.view.splash.SplashFragment
 import com.example.mobile.pruebabold.view.weather.SearchFragment
-import com.example.mobile.pruebabold.view.weather.SearchViewModel
 import com.example.mobile.pruebabold.view.woeid.WoeidFragment
 import javax.inject.Inject
 
@@ -38,16 +27,12 @@ class MainActivity : AppCompatActivity() {
         (App.getContext() as App).getComponentApplication()?.inject(this)
 
         fragmentSearch.setDelegate(responseFragmentSearch())
+        fragmentSplash.setDelegate(responseFragmentSplash())
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         navigationFragment(fragmentSplash)
-        Thread{
-            Thread.sleep(2000)
-            runOnUiThread{
-                navigationFragment(fragmentSearch, getString(R.string.key_fragment_search))
-            }
-        }.start()
 
     }
 
@@ -79,5 +64,15 @@ class MainActivity : AppCompatActivity() {
 
         }
 
+    }
+
+    inner class responseFragmentSplash : SplashFragment.SplashFragmentDelegate{
+        override fun navigationFragmentSearch() {Thread{
+            Thread.sleep(3000)
+            runOnUiThread{
+                navigationFragment(fragmentSearch, getString(R.string.key_fragment_search))
+            }
+        }.start()
+        }
     }
 }

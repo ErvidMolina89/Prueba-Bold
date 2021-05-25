@@ -12,6 +12,7 @@ import javax.inject.Inject
 interface WoeidViewModelDelegate {
     fun setMediaQuery(woeidModels: WoeidModels)
     fun setFailDataLoad()
+    fun notifyListEmpty()
 }
 class WoeidViewModel : ViewModel() {
 
@@ -26,7 +27,9 @@ class WoeidViewModel : ViewModel() {
     fun callInfoWoeid(woeid: Int){
         consulteForWoeidUseCase.invoke(woeid,
             {
-                delegate?.setMediaQuery(it)
+                if(it.consolidated_weather?.size == 0){
+                    delegate?.notifyListEmpty()
+                }else { delegate?.setMediaQuery(it) }
             },
             {
                 delegate?.setFailDataLoad()

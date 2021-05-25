@@ -6,13 +6,33 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.mobile.pruebabold.R
+import com.example.mobile.pruebabold.base.App
+import com.example.mobile.pruebabold.databinding.FragmentSearchBinding
+import com.example.mobile.pruebabold.databinding.FragmentSplashBinding
+import com.example.mobile.pruebabold.models.models_search.QueryModels
+import com.example.mobile.pruebabold.view.weather.SearchFragment
 import javax.inject.Inject
 
 class SplashFragment : Fragment() {
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_splash, container, false)
+    private var delegate: SplashFragmentDelegate? = null
+    lateinit var binding: FragmentSplashBinding
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        binding = FragmentSplashBinding.inflate(inflater)
+        delegate?.navigationFragmentSearch()
+        return binding.root
+    }
+
+    fun setDelegate(delegate: SplashFragmentDelegate){
+        this.delegate = delegate
+    }
+
+    interface SplashFragmentDelegate {
+        fun navigationFragmentSearch()
     }
 }

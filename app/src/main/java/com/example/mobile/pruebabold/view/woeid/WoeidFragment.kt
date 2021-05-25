@@ -14,7 +14,7 @@ import com.example.mobile.pruebabold.databinding.FragmentWoeidBinding
 import com.example.mobile.pruebabold.models.models_search.QueryModels
 import com.example.mobile.pruebabold.models.models_woeid.ConsolidatedWeatherModels
 import com.example.mobile.pruebabold.models.models_woeid.WoeidModels
-import com.example.mobile.pruebabold.utlis.showInlog
+import com.example.mobile.pruebabold.utlis.*
 import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
@@ -41,7 +41,20 @@ class WoeidFragment : Fragment() {
         binding = FragmentWoeidBinding.inflate(inflater)
         woeidViewModel.setDelegate(ResponseViewModel())
 
-        woeidViewModel.callInfoWoeid(queryModel!!.woeid!!)
+        if(context?.isNetworkAvailable()!!) {
+            woeidViewModel.callInfoWoeid(queryModel!!.woeid!!)
+            context?.showProgress()
+        } else {
+            DialogGeneric
+                .getInstance()
+                .withTitle(R.string.internet)
+                .withText(getString(R.string.no_internet))
+                .withTextBtnOk(R.string.btn_accept)
+                .withActionBtnOk {
+
+                }
+            context?.showDialogGeneric()
+        }
 
         setInfoHeader()
         return binding.root
@@ -163,12 +176,25 @@ class WoeidFragment : Fragment() {
     inner class ResponseViewModel : WoeidViewModelDelegate {
         override fun setMediaQuery(woeidModels: WoeidModels) {
             listWoeid = woeidModels.consolidated_weather
+            context?.hiddenProgress()
             configGraphic()
             configTable()
         }
 
         override fun setFailDataLoad() {
             "Fallo".showInlog("Respuesta Fallida")
+        }
+
+        override fun notifyListEmpty() {
+            DialogGeneric
+                .getInstance()
+                .withTitle(R.string.list_is_empty)
+                .withText("No se encontraron datos")
+                .withTextBtnOk(R.string.btn_accept)
+                .withActionBtnOk {
+
+                }
+            context?.hiddenProgress()
         }
     }
 }

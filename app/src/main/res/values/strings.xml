@@ -20,4 +20,6 @@
     <string name="key_fragment_woeid">fragmentWoeid</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="key_fragment_search">key fragment search</string>
+    <string name="internet">Coneccion Internet</string>
+    <string name="no_internet">No cuentas con conección a Internet</string>
 </resources>

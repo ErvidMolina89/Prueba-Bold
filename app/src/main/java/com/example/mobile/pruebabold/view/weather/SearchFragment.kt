@@ -15,9 +15,7 @@ import com.example.mobile.pruebabold.R
 import com.example.mobile.pruebabold.base.App
 import com.example.mobile.pruebabold.databinding.FragmentSearchBinding
 import com.example.mobile.pruebabold.models.models_search.QueryModels
-import com.example.mobile.pruebabold.utlis.DialogGeneric
-import com.example.mobile.pruebabold.utlis.showDialogGeneric
-import com.example.mobile.pruebabold.utlis.showInlog
+import com.example.mobile.pruebabold.utlis.*
 import javax.inject.Inject
 
 class SearchFragment : Fragment() {
@@ -40,6 +38,7 @@ class SearchFragment : Fragment() {
         onStyleRecycler()
         listenerRevycler()
         listenerEditTextSearch()
+        context?.hiddenProgress()
 
         return binding.root
     }
@@ -51,7 +50,20 @@ class SearchFragment : Fragment() {
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
 
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                searchViewModel.callInfoSearch(p0.toString())
+                if(context?.isNetworkAvailable()!!) {
+                    searchViewModel.callInfoSearch(p0.toString())
+                    context?.showProgress()
+                } else {
+                    DialogGeneric
+                        .getInstance()
+                        .withTitle(R.string.internet)
+                        .withText(getString(R.string.no_internet))
+                        .withTextBtnOk(R.string.btn_accept)
+                        .withActionBtnOk {
+
+                        }
+                    context?.showDialogGeneric()
+                }
             }
 
         })
@@ -84,6 +96,7 @@ class SearchFragment : Fragment() {
         override fun setMediaQuery(list: MutableList<QueryModels>) {
             binding.includeListEmpty.visibility = View.GONE
             adapter.setData(list)
+            context?.hiddenProgress()
             hideKeyboard()
         }
 
@@ -99,6 +112,7 @@ class SearchFragment : Fragment() {
         override fun notifyListEmpty() {
             binding.includeListEmpty.visibility = View.VISIBLE
             adapter.setData(emptyList<QueryModels>().toMutableList())
+            context?.hiddenProgress()
             hideKeyboard()
         }
     }
