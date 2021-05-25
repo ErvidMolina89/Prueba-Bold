@@ -1,6 +1,8 @@
 package com.example.mobile.pruebabold.models.models_woeid
 
-class ParentModels {
+import com.example.mobile.pruebabold.models.Base
+
+class ParentModels : Base {
 
     var latt_long: String? = null
     var location_type: String? = null

@@ -1,15 +1,12 @@
 package com.example.mobile.pruebabold.view.woeid
 
-import android.content.Context
 import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.inputmethod.InputMethodManager
 import android.widget.TableRow
 import android.widget.TextView
-import androidx.core.content.ContextCompat.getSystemService
 import androidx.fragment.app.Fragment
 import com.example.mobile.pruebabold.R
 import com.example.mobile.pruebabold.base.App
@@ -43,7 +40,9 @@ class WoeidFragment : Fragment() {
         (App.getContext() as App).getComponentApplication()?.inject(this)
         binding = FragmentWoeidBinding.inflate(inflater)
         woeidViewModel.setDelegate(ResponseViewModel())
+
         woeidViewModel.callInfoWoeid(queryModel!!.woeid!!)
+
         setInfoHeader()
         return binding.root
     }
@@ -58,28 +57,30 @@ class WoeidFragment : Fragment() {
     private fun configGraphic(){
         binding.lineChart.visibility = View.VISIBLE
         val list_temPromedio = emptyList<Entry>().toMutableList()
-        val list_temMin = emptyList<Entry>().toMutableList()
-        val list_temMax = emptyList<Entry>().toMutableList()
+        val list_predictability = emptyList<Entry>().toMutableList()
+        val list_humidity = emptyList<Entry>().toMutableList()
 
         for (item in listWoeid!!){
             list_temPromedio.add(Entry(list_temPromedio.size.toFloat(), item.the_temp!!))
-            list_temMin.add(Entry(list_temMin.size.toFloat(), item.min_temp!!))
-            list_temMax.add(Entry(list_temMax.size.toFloat(), item.max_temp!!))
+            list_predictability.add(Entry(list_predictability.size.toFloat(), item.predictability!!.toFloat()))
+            list_humidity.add(Entry(list_humidity.size.toFloat(), item.humidity!!.toFloat()))
         }
 
-        lineDataSet = LineDataSet(list_temPromedio, "Temperatura Promedio")
+        lineDataSet = LineDataSet(list_temPromedio, "Temp Promedio")
+
+        lineDataSet2 = LineDataSet(list_predictability, "Predictability")
         lineDataSet?.setCircleColor(Color.RED)
         lineDataSet?.setColor(Color.RED)
 
-        lineDataSet2 = LineDataSet(list_temMin, "Temperatura Minima")
-
-        lineDataSet3 = LineDataSet(list_temMax, "Temperatura Maxima")
+        lineDataSet3 = LineDataSet(list_humidity, "Humedad")
+        lineDataSet3?.setCircleColor(Color.RED)
         lineDataSet3?.setColor(Color.GREEN)
 
         // Asociamos al gráfico
         val lineData = LineData()
         lineData.addDataSet(lineDataSet)
         lineData.addDataSet(lineDataSet2)
+        lineData.addDataSet(lineDataSet3)
         lineData.addDataSet(lineDataSet3)
         binding.lineChart.setData(lineData)
     }
@@ -103,14 +104,17 @@ class WoeidFragment : Fragment() {
 
             val temp = TextView(activity)
             temp.text = item.the_temp.toString()
+            temp.textAlignment = View.TEXT_ALIGNMENT_CENTER
             row.addView(temp)
 
             val state = TextView(activity)
             state.text = item.weather_state_name
+            state.textAlignment = View.TEXT_ALIGNMENT_CENTER
             row.addView(state)
 
             val humidity = TextView(activity)
             humidity.text = item.humidity.toString()
+            humidity.textAlignment = View.TEXT_ALIGNMENT_CENTER
             row.addView(humidity)
 
             binding.tlDataWeather.addView(row)

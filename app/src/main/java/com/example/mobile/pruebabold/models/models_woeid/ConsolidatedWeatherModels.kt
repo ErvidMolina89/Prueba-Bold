@@ -1,6 +1,8 @@
 package com.example.mobile.pruebabold.models.models_woeid
 
-class ConsolidatedWeatherModels {
+import com.example.mobile.pruebabold.models.Base
+
+class ConsolidatedWeatherModels : Base {
     var id: String? = null
     var weather_state_name: String? = null
     var weather_state_abbr: String? = null

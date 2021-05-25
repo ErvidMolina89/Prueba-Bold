@@ -1,6 +1,8 @@
 package com.example.mobile.pruebabold.models.models_woeid
 
-class SourceModels {
+import com.example.mobile.pruebabold.models.Base
+
+class SourceModels : Base {
 
     var crawl_rate: Int? = null
     var slug: String? = null

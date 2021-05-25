@@ -5,4 +5,8 @@
     <dimen name="dimen_80dp">80dp</dimen>
     <dimen name="dimen_8dp">8dp</dimen>
     <dimen name="dimen_16dp">16dp</dimen>
+    <dimen name="dimens15dp">15dp</dimen>
+    <dimen name="icono_50dp">50dp</dimen>
+    <dimen name="dimen_text_20sp">20sp</dimen>
+    <dimen name="dimen_16sp">16sp</dimen>
 </resources>

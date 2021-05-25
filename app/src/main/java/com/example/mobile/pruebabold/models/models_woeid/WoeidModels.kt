@@ -1,10 +1,11 @@
 package com.example.mobile.pruebabold.models.models_woeid
 
+import com.example.mobile.pruebabold.models.Base
 import com.example.mobile.pruebabold.models.models_woeid.ConsolidatedWeatherModels
 import com.example.mobile.pruebabold.models.models_woeid.ParentModels
 import com.example.mobile.pruebabold.models.models_woeid.SourceModels
 
-class WoeidModels {
+class WoeidModels : Base {
 
     var consolidated_weather: MutableList<ConsolidatedWeatherModels>? = null
     var latt_long: String? = null

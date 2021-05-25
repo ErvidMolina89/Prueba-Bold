@@ -1,6 +1,8 @@
 package com.example.mobile.pruebabold.models.models_search
 
-class QueryModels {
+import com.example.mobile.pruebabold.models.Base
+
+class QueryModels : Base {
 
     var distance: Int? = null
     var latt_long: String? = null

@@ -11,9 +11,12 @@ import android.view.inputmethod.InputMethodManager
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.mobile.pruebabold.R
 import com.example.mobile.pruebabold.base.App
 import com.example.mobile.pruebabold.databinding.FragmentSearchBinding
 import com.example.mobile.pruebabold.models.models_search.QueryModels
+import com.example.mobile.pruebabold.utlis.DialogGeneric
+import com.example.mobile.pruebabold.utlis.showDialogGeneric
 import com.example.mobile.pruebabold.utlis.showInlog
 import javax.inject.Inject
 
@@ -72,9 +75,16 @@ class SearchFragment : Fragment() {
         this.delegate = delegate
     }
 
+    private fun hideKeyboard(){
+        val imm: InputMethodManager? = context?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager?
+        imm?.hideSoftInputFromWindow(binding.editTextSearch.getWindowToken(), 0)
+    }
+
     inner class ResponseViewModel : SearchViewModelDelegate {
         override fun setMediaQuery(list: MutableList<QueryModels>) {
+            binding.includeListEmpty.visibility = View.GONE
             adapter.setData(list)
+            hideKeyboard()
         }
 
         override fun setFailDataLoad() {
@@ -83,8 +93,13 @@ class SearchFragment : Fragment() {
 
         override fun navigationToLocation(location: QueryModels) {
             delegate?.showDetailsItemSelect(location)
-            val imm: InputMethodManager? = context?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager?
-            imm?.hideSoftInputFromWindow(binding.editTextSearch.getWindowToken(), 0)
+            hideKeyboard()
+        }
+
+        override fun notifyListEmpty() {
+            binding.includeListEmpty.visibility = View.VISIBLE
+            adapter.setData(emptyList<QueryModels>().toMutableList())
+            hideKeyboard()
         }
     }
 

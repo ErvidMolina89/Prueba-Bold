@@ -13,4 +13,11 @@
     <string name="state_weather">Estado Clima</string>
     <string name="humidity">Humedad</string>
     <string name="data_wheather">Datos del Clima</string>
+    <string name="btn_accept">Aceptar</string>
+    <string name="cancel">Cancelar</string>
+    <string name="description">Description</string>
+    <string name="search_location">Busqueda de Ubicación</string>
+    <string name="key_fragment_woeid">fragmentWoeid</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="key_fragment_search">key fragment search</string>
 </resources>

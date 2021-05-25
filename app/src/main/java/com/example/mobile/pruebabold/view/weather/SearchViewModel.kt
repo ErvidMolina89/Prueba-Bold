@@ -11,6 +11,7 @@ interface SearchViewModelDelegate {
     fun setMediaQuery(list: MutableList<QueryModels>)
     fun setFailDataLoad()
     fun navigationToLocation(location: QueryModels)
+    fun notifyListEmpty()
 }
 
 class SearchViewModel : ViewModel() {
@@ -26,7 +27,9 @@ class SearchViewModel : ViewModel() {
     fun callInfoSearch(search: String){
         consulteForSearchUseCase.invoke(search,
             {
-                delegate?.setMediaQuery(it)
+                if(it.size == 0){
+                    delegate?.notifyListEmpty()
+                }else{ delegate?.setMediaQuery(it)}
             },
             {
                 delegate?.setFailDataLoad()
