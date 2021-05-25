@@ -54,6 +54,7 @@ class SearchRecyclerViewAdapter  (
 
     inner class ViewHolder(val mView: View) : RecyclerView.ViewHolder(mView) {
 
+//        val tv_icon         : TextView = mView.findViewById(R.id.ivc_avatar)
         val tv_title         : TextView = mView.findViewById(R.id.tv_title_location)
         val tv_location_type : TextView = mView.findViewById(R.id.tv_type_location)
         val tv_latt_long     : TextView = mView.findViewById(R.id.tv_latt_long)
